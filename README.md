@@ -2,10 +2,10 @@
 
 # TODOS
 
-- [ ] Setup Nextjs with tailwind
-- [ ] Setup Prettier and husky
-- [ ] Setup Apollo Client and Config
-- [ ] Persist Apollo Cache
+- [x] Setup Nextjs with tailwind
+- [x] Setup Prettier and husky
+- [x] Setup Apollo Client and Config
+- [x] Persist Apollo Cache
 - [ ] Setup Test Environment (jest)
 - [ ] Create Multi Step Form Page Logic
 - [ ] Create Local Query and Mutation
