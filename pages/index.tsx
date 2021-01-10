@@ -1,8 +1,14 @@
-import Layout from '../components/Layout'
+import Layout from '@components/Layout'
+import React, { ReactElement } from 'react'
 
-const IndexPage = () => (
+const IndexPage = (): ReactElement => (
   <Layout title="Home | Next.js + TypeScript Example">
-    <p className={'text-blue-600'}>Hello Next.js 👋</p>
+    <p className={'text-blue-600'}>
+      Hello Next.js{' '}
+      <span role="img" aria-label="wave hand emoji">
+        👋
+      </span>
+    </p>
   </Layout>
 )
 
