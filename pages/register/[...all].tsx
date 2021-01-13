@@ -1,5 +1,4 @@
 import React, { ReactElement } from 'react'
-import HomeLayout from '@components/home-layout'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import { AllQueryParamsType } from '../../src/types/common'

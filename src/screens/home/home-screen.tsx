@@ -18,15 +18,15 @@ const HomeScreen: FC = () => {
   }
 
   return (
-    <section className={'h-full flex flex-1 flex-grow justify-center items-center flex-col'}>
-      <h1 className={'text-6xl font-bold leading-tight text-center text-darkgray -mt-40'}>
+    <section className={'h-full flex flex-grow justify-center items-center flex-col'}>
+      <h1 className={'text-3xl md:text-6xl font-bold leading-tight text-center text-darkgray -mt-40'}>
         Leave your apartments.
-        <span className={'block text-6xl font-bold leading-tight text-center text-midgray'}>
+        <span className={'block text-3xl md:text-6xl font-bold leading-tight text-center text-midgray'}>
           In better hands.
         </span>
       </h1>
 
-      <p className={'text-xl leading-relaxed text-center max-w-xl my-8 mx-auto text-lightgray'}>
+      <p className={'text-md md:text-xl leading-relaxed text-center max-w-xl my-4 md:my-8 mx-auto text-lightgray'}>
         Home is the simplest, safest, and most profitable way to rent out your apartments.
       </p>
       <BaseButton type="button" onClick={handleSubmit}>
