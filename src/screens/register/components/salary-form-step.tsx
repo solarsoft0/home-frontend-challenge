@@ -3,34 +3,12 @@ import {
   FormStepsControlButtons,
   gotoStep,
 } from '@screens/register/components/form-control-buttons'
-import { StepProps } from '../../../types/common'
+import { OptionType, StepProps } from '../../../types/common'
 import { useApolloClient } from '@apollo/client'
 import { updateRegistrationData } from '@utils/cache-data-util'
+import { salaryOptions } from '@utils/common'
 
-type OptionType = { [key: string]: string }
-
-const options: OptionType[] = [
-  {
-    key: 'BETWEEN_0_TO_1',
-    value: '0 - 1.000',
-  },
-  {
-    key: 'BETWEEN_1_TO_2',
-    value: '1.000 - 2.000',
-  },
-  {
-    key: 'BETWEEN_2_TO_3',
-    value: '2.000 - 3.000',
-  },
-  {
-    key: 'BETWEEN_3_TO_4',
-    value: '3.000 - 4.000',
-  },
-  {
-    key: 'MORE_THAN_4',
-    value: 'More than 4.000',
-  },
-]
+const salaryOptionsArray = Object.values(salaryOptions)
 
 export const SalaryFormStep: FC<StepProps> = (props) => {
   const {
@@ -51,27 +29,32 @@ export const SalaryFormStep: FC<StepProps> = (props) => {
   }
 
   return (
-    <form id={'salary-step-form'} onSubmit={_handleSubmit}>
-      <fieldset>
-        <legend id="radiogroup-label" className="sr-only">
-          Server size
-        </legend>
-        <ul className="space-y-4" role="radiogroup" aria-labelledby="radiogroup-label">
-          {options.map((option: OptionType, index: number) => {
-            return (
-              <SalarySelectOption
-                key={index}
-                index={index}
-                isSelected={option.key === salary}
-                option={option}
-                setOption={setSalary}
-              />
-            )
-          })}
-        </ul>
-      </fieldset>
+    <div className={'flex-grow flex flex-col pb-10 md:pb-0 justify-between md:justify-start'}>
+      <form id={'salary-step-form'} onSubmit={_handleSubmit}>
+        <p className="mb-3 block text-sm font-light text-gray-700 pt-5 md:pt-0">
+          Salary expectation
+        </p>
+        <fieldset>
+          <legend id="radiogroup-label" className="sr-only">
+            Server size
+          </legend>
+          <div className="space-y-4" role="radiogroup" aria-labelledby="radiogroup-label">
+            {salaryOptionsArray.map((option: OptionType, index: number) => {
+              return (
+                <SalarySelectOption
+                  key={index}
+                  index={index}
+                  isSelected={option.key === salary}
+                  option={option}
+                  setOption={setSalary}
+                />
+              )
+            })}
+          </div>
+        </fieldset>
+      </form>
       <FormStepsControlButtons formName={'salary-step-form'} {...props} />
-    </form>
+    </div>
   )
 }
 
@@ -81,7 +64,7 @@ type SalarySelectOptionProps = {
   option: OptionType
   index: number
   isSelected: boolean
-  setOption: React.Dispatch<any>
+  setOption: React.Dispatch<React.SetStateAction<string>>
 }
 
 const SalarySelectOption: FC<SalarySelectOptionProps> = (props) => {
@@ -89,23 +72,24 @@ const SalarySelectOption: FC<SalarySelectOptionProps> = (props) => {
   const { key, value } = option
 
   return (
-    <li
+    <div
       id={`radiogroup-option-${index}`}
       tabIndex={isSelected ? 0 : -1}
       role="radio"
       aria-checked={isSelected ? 'true' : 'false'}
       onClick={() => setOption(key)}
-      className="group relative bg-white rounded-lg shadow-sm cursor-pointer focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-indigo-500"
+      onKeyPress={() => setOption(key)}
+      className="group relative bg-white rounded-lg  cursor-pointer focus:outline-none   border-none w-full"
     >
       <div className="rounded-lg border border-gray-300 bg-white px-6 py-4 hover:border-gray-400 sm:flex sm:justify-between">
-        <div className="flex items-center">{value}</div>
+        <div className="flex text-sm font-light text-gray-700 items-center">{value}</div>
       </div>
       <div
         className={`${
-          isSelected ? 'border-indigo-500' : 'border-transparent'
+          isSelected ? 'border-lemon' : 'border-transparent'
         } absolute inset-0 rounded-lg border-2 pointer-events-none`}
         aria-hidden="true"
       />
-    </li>
+    </div>
   )
 }

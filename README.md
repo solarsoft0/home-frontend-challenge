@@ -10,8 +10,8 @@
 - [x] ~~Create Local Query and Mutation~~ Create Write Query and Write Fragment
 - [x] ~~Hook query and Mutation to Form~~  hook cache management util to form
 - [x] Handle Error and Retry
-- [ ] Improve UI using home-ht style as a guide
-- [ ] ensure responsiveness
+- [x] Improve UI using home-ht style as a guide
+- [x] ensure responsiveness
 - [ ] add ease-in animation with framer
 - [ ] Setup Test Environment (jest)
 - [ ] E2E test

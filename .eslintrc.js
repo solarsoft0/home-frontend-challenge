@@ -38,6 +38,7 @@ module.exports = {
 
         // todo customize to fit
         '@typescript-eslint/explicit-function-return-type': 'off',
+        '@typescript-eslint/ban-ts-comment': 'off',
 
         // Why would you want unused vars?
         '@typescript-eslint/no-unused-vars': ['error'],

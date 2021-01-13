@@ -1,4 +1,3 @@
-
 export interface IRegistration {
   id: string
   fullName?: string | null
@@ -24,11 +23,18 @@ export enum RouteStepType {
 
 export type FormStepsProps = {
   currentStepIndex: number
-  registrationId: string,
+  registrationId: string
   registrationData: Record<string, string | null>
 }
 export type StepProps = {
   currentPage: number
   registrationId: string
   registrationData: Record<string, string | null>
+}
+export type OptionType = {
+  key: string
+  value: string
+}
+export type OptionsType = {
+  [key: string]: OptionType
 }

@@ -17,7 +17,7 @@ const RegistrationPage = (): ReactElement => {
   const { all = [] } = (router.query as QueryParamsType) || {}
 
   return (
-    <Layout title="Home | Next.js + TypeScript Example">
+    <Layout title="Register">
       <RegisterView allQueryParams={all} />
     </Layout>
   )

@@ -6,19 +6,19 @@ type FormStepsProps = {
 }
 export const StepsSidebar: FC<FormStepsProps> = (props) => {
   const { currentStepIndex } = props
-  const percentage: string = `${(currentStepIndex * 100) / totalStepNo}%`
+  const percentage = `${(currentStepIndex * 100) / totalStepNo}%`
   const isSummaryPage: boolean = totalStepNo === currentStepIndex
 
   return (
-    <nav aria-label="Sidebar">
+    <nav className={'w-1/5 mr-6 hidden lg:mr-16 md:block'} aria-label="Sidebar">
       <div className="space-y-1">
         <div aria-current={isSummaryPage ? false : 'page'}>
-          <div className="relative pt-1  mt-4">
+          <div className="relative pt-1">
             <div className="flex mb-2">
               <div className={'flex'}>
                 <span
-                  className={`text-xs font-semibold inline-block uppercase text-gray-600    ${
-                    !isSummaryPage ? 'text-green-500 bold' : 'text-gray-400'
+                  className={`text-sm font-semibold inline-block uppercase text-gray-600    ${
+                    !isSummaryPage ? 'text-lemon bold' : 'text-gray-400'
                   }`}
                 >
                   Registration
@@ -29,7 +29,7 @@ export const StepsSidebar: FC<FormStepsProps> = (props) => {
               <div
                 style={{ width: percentage }}
                 className={`shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-gray-500 ${
-                  isSummaryPage ? 'bg-green-500' : 'bg-gray-500'
+                  isSummaryPage ? 'bg-lemon' : 'bg-gray-500'
                 }`}
               />
             </div>
@@ -38,12 +38,12 @@ export const StepsSidebar: FC<FormStepsProps> = (props) => {
 
         <div
           className={`group flex items-center pr-3 py-2 text-sm font-medium rounded-md ${
-            isSummaryPage ? 'text-green-500 bold' : 'text-gray-400'
+            isSummaryPage ? 'text-lemon bold' : 'text-gray-400'
           }`}
           aria-current={isSummaryPage ? 'page' : false}
         >
           <svg
-            className={`mr-2 h-6 w-6 ${isSummaryPage ? 'text-green-500' : 'text-gray-400'}`}
+            className={`mr-2 h-6 w-6 ${isSummaryPage ? 'text-lemon' : 'text-gray-400'}`}
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"

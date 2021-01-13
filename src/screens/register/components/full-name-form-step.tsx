@@ -19,20 +19,20 @@ export const FullNameFormStep: FC<StepProps> = (props) => {
   const nextPage: number = currentPage + 1
   const _handleSubmit = (e: FormEvent) => {
     e.preventDefault()
-    const result = updateRegistrationData(registrationId, { fullName }, client);
-    if(result){
+    const result = updateRegistrationData(registrationId, { fullName }, client)
+    if (result) {
       gotoStep(nextPage, registrationId)
     }
     // go home
   }
 
   return (
-    <div>
+    <div className={'flex-grow flex flex-col pb-10 md:pb-0 justify-between md:justify-start'}>
       <form id={'full-name-step-form'} onSubmit={_handleSubmit}>
-        <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+        <label htmlFor="name" className="block text-sm font-light text-gray-700 pt-5 md:pt-0">
           Full Name
         </label>
-        <div className="mt-1 relative rounded-md shadow-sm">
+        <div className="my-3 relative rounded-md shadow-sm">
           <input
             type="text"
             name="name"
@@ -40,7 +40,7 @@ export const FullNameFormStep: FC<StepProps> = (props) => {
             required
             value={fullName}
             onChange={({ target }) => setFullName(target.value)}
-            className="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-md"
+            className=" shadow-md  border-none block w-full sm:text-sm text-base text-gray-800  rounded-md w-full py-4 px-4"
             placeholder="Oka Moritz"
           />
         </div>

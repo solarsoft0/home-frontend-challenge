@@ -4,15 +4,15 @@ import { FormSteps } from '@screens/register/components/form-steps'
 import { StepsSidebar } from '@screens/register/components/steps-sidebar'
 import { RegisterViewProps } from '../../types/common'
 import { getRegistrationData } from '@utils/cache-data-util'
-import { ApolloClient, useApolloClient } from '@apollo/client'
+import { useApolloClient } from '@apollo/client'
 import { routeStep } from '@utils/common'
-
 
 export const RegisterView: FC<RegisterViewProps> = (props) => {
   const {
     allQueryParams: [registrationId, step, ...restProps],
   } = props
-  const client: ApolloClient<any> = useApolloClient();
+
+  const client = useApolloClient()
 
   // if SSG return empty (SSG doesnt make path params available)
   // its good we can SSG base UI on build time, and render the rest on client side
@@ -20,7 +20,7 @@ export const RegisterView: FC<RegisterViewProps> = (props) => {
     return <></>
   }
 
-  let currentStepIndex: number = -1
+  let currentStepIndex = -1
   if (step) {
     currentStepIndex = routeStep.indexOf(step)
   }
@@ -30,19 +30,19 @@ export const RegisterView: FC<RegisterViewProps> = (props) => {
     return <></>
   }
 
-   const registrationData = getRegistrationData(registrationId, client);
+  const registrationData = getRegistrationData(registrationId, client)
 
-if (!registrationData){
+  if (!registrationData) {
+    return <div className={'flex'}>goto home or try again</div>
+  }
   return (
-    <div className={'flex'}>
-      goto home or try again
-    </div>
-  )
-}
-  return (
-    <div className={'flex'}>
+    <div className={'flex'} style={{ height: 'calc(100vh - 112px)' }}>
       <StepsSidebar currentStepIndex={currentStepIndex} />
-      <FormSteps registrationId={registrationId} currentStepIndex={currentStepIndex} registrationData={registrationData}/>
+      <FormSteps
+        registrationId={registrationId}
+        currentStepIndex={currentStepIndex}
+        registrationData={registrationData}
+      />
     </div>
   )
 }

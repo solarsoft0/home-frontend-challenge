@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 import { router } from 'next/client'
 import { routeStep, totalStepNo } from '@utils/common'
+import BaseButton from '@components/BaseButton'
 
 export type StepProps = {
   registrationId: string
@@ -8,7 +9,7 @@ export type StepProps = {
   formName: string
 }
 
-export const gotoStep = (step: number, registrationId: string) => {
+export const gotoStep = (step: number, registrationId: string): void => {
   const route: string = routeStep[step]
   // Make sure we're in the browser
   if (typeof window !== 'undefined') {
@@ -22,11 +23,15 @@ export const FormStepsControlButtons: FC<StepProps> = (props) => {
   const nextPage: number = currentPage + 1
 
   return (
-    <span className="relative z-0 inline-flex shadow-sm rounded-md">
+    <span className="relative z-0 mt-8 inline-flex justify-end sm:justify-start">
       {previousPage >= 0 && (
         <button
           type="button"
-          className="relative inline-flex items-center px-4 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
+          style={{
+            filter:
+              'drop-shadow(rgba(0, 0, 0, 0.09) 0px 0px 2px) drop-shadow(rgba(0, 0, 0, 0.12) 0px 1px 2px)',
+          }}
+          className="mr-4 relative inline-flex items-center px-4 py-4 rounded-full border-none bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:z-10 focus:outline-none"
           onClick={() => gotoStep(previousPage, registrationId)}
         >
           <span className="sr-only">Previous</span>
@@ -45,22 +50,27 @@ export const FormStepsControlButtons: FC<StepProps> = (props) => {
           </svg>
         </button>
       )}
-      <button
-        type="submit"
-        className="-ml-px relative inline-flex items-center px-3 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500"
-        form={formName}
-      >
-        <svg
-          className="-ml-1 mr-2 h-5 w-5 text-gray-400"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 20 20"
-          fill="currentColor"
-          aria-hidden="true"
-        >
-          <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z" />
-        </svg>
-        {nextPage > totalStepNo ? 'Submit' : 'Next'}
-      </button>
+
+      <BaseButton type="submit" form={formName}>
+        {nextPage > totalStepNo ? (
+          'Submit'
+        ) : (
+          <div className={'w-full justify-between inline-flex items-center min-w-button pl-1  '}>
+            <span style={{ fontSize: '1rem' }}>Next</span>
+            <svg
+              strokeWidth="2"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+            >
+              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" fill="currentColor" />
+              <path d="M0 0h24v24H0z" fill="none" />
+            </svg>
+          </div>
+        )}
+      </BaseButton>
     </span>
   )
 }
