@@ -36,19 +36,49 @@ const SummaryFormStep = dynamic(
 )
 
 export const FormSteps: FC<FormStepsProps> = (props) => {
-  const { currentStepIndex, registrationId , registrationData } = props
+  const { currentStepIndex, registrationId, registrationData } = props
 
   switch (routeStep[currentStepIndex]) {
     case RouteStepType['full-name']:
-      return <FullNameFormStep registrationId={registrationId} currentPage={currentStepIndex} registrationData={registrationData} />
+      return (
+        <FullNameFormStep
+          registrationId={registrationId}
+          currentPage={currentStepIndex}
+          registrationData={registrationData}
+        />
+      )
     case RouteStepType['email']:
-      return <EmailFormStep currentPage={currentStepIndex} registrationId={registrationId} registrationData={registrationData} />
+      return (
+        <EmailFormStep
+          currentPage={currentStepIndex}
+          registrationId={registrationId}
+          registrationData={registrationData}
+        />
+      )
     case RouteStepType['phone-number']:
-      return <PhoneNumberFormStep currentPage={currentStepIndex} registrationId={registrationId} registrationData={registrationData} />
+      return (
+        <PhoneNumberFormStep
+          currentPage={currentStepIndex}
+          registrationId={registrationId}
+          registrationData={registrationData}
+        />
+      )
     case RouteStepType['salary']:
-      return <SalaryFormStep currentPage={currentStepIndex} registrationId={registrationId} registrationData={registrationData} />
+      return (
+        <SalaryFormStep
+          currentPage={currentStepIndex}
+          registrationId={registrationId}
+          registrationData={registrationData}
+        />
+      )
     case RouteStepType['summary']:
-      return <SummaryFormStep currentPage={currentStepIndex} registrationId={registrationId} registrationData={registrationData} />
+      return (
+        <SummaryFormStep
+          currentPage={currentStepIndex}
+          registrationId={registrationId}
+          registrationData={registrationData}
+        />
+      )
     default:
       return <>error</>
   }

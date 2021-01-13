@@ -28,7 +28,7 @@ export const StepsSidebar: FC<FormStepsProps> = (props) => {
             <div className="overflow-hidden h-2 text-xs flex rounded bg-gray-200">
               <div
                 style={{ width: percentage }}
-                className={`shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-gray-500 ${
+                className={`transition-all shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-gray-500 ${
                   isSummaryPage ? 'bg-lemon' : 'bg-gray-500'
                 }`}
               />

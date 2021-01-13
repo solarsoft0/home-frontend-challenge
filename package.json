@@ -20,6 +20,7 @@
     "apollo-link-error": "^1.1.13",
     "apollo3-cache-persist": "^0.9.1",
     "deepmerge": "^4.2.2",
+    "framer-motion": "^3.2.1",
     "graphql": "^15.4.0",
     "lodash.isequal": "^4.5.0",
     "next": "latest",

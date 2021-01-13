@@ -6,6 +6,7 @@ import {
 import { StepProps } from '../../../types/common'
 import { useApolloClient } from '@apollo/client'
 import { updateRegistrationData } from '@utils/cache-data-util'
+import FadeInTransition from '@components/FadeInTransition'
 
 export const EmailFormStep: FC<StepProps> = (props) => {
   const {
@@ -19,14 +20,12 @@ export const EmailFormStep: FC<StepProps> = (props) => {
 
   const _handleSubmit = (e: FormEvent) => {
     e.preventDefault()
-    const result = updateRegistrationData(registrationId, { email }, client)
-    if (result) {
-      gotoStep(nextPage, registrationId)
-    }
+    updateRegistrationData(registrationId, { email }, client)
+    gotoStep(nextPage, registrationId)
   }
 
   return (
-    <div className={'flex-grow flex flex-col pb-10 md:pb-0 justify-between md:justify-start'}>
+    <FadeInTransition className={'flex-grow flex flex-col justify-between md:justify-start'}>
       <form id={'email-step-form'} onSubmit={_handleSubmit}>
         <label htmlFor="email" className="block text-sm font-light text-gray-700 pt-5 md:pt-0">
           Email
@@ -58,6 +57,6 @@ export const EmailFormStep: FC<StepProps> = (props) => {
         </div>
       </form>
       <FormStepsControlButtons formName={'email-step-form'} {...props} />
-    </div>
+    </FadeInTransition>
   )
 }

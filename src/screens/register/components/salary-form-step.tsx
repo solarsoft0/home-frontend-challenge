@@ -7,6 +7,7 @@ import { OptionType, StepProps } from '../../../types/common'
 import { useApolloClient } from '@apollo/client'
 import { updateRegistrationData } from '@utils/cache-data-util'
 import { salaryOptions } from '@utils/common'
+import FadeInTransition from '@components/FadeInTransition'
 
 const salaryOptionsArray = Object.values(salaryOptions)
 
@@ -22,21 +23,20 @@ export const SalaryFormStep: FC<StepProps> = (props) => {
 
   const _handleSubmit = (e: FormEvent) => {
     e.preventDefault()
-    const result = updateRegistrationData(registrationId, { salary }, client)
-    if (result) {
-      gotoStep(nextPage, registrationId)
-    }
+    if (!salary) return
+    updateRegistrationData(registrationId, { salary }, client)
+    gotoStep(nextPage, registrationId)
   }
 
   return (
-    <div className={'flex-grow flex flex-col pb-10 md:pb-0 justify-between md:justify-start'}>
-      <form id={'salary-step-form'} onSubmit={_handleSubmit}>
-        <p className="mb-3 block text-sm font-light text-gray-700 pt-5 md:pt-0">
-          Salary expectation
-        </p>
+    <FadeInTransition
+      className={'flex-grow flex flex-col pb-10 md:pb-0 justify-between md:justify-start'}
+    >
+      <form id={'salary-step-form'} onSubmit={_handleSubmit} className={'md:h-1/2'}>
+        <p className="mb-3 block text-sm font-light text-gray-700 pt-5 md:pt-0">Salary</p>
         <fieldset>
           <legend id="radiogroup-label" className="sr-only">
-            Server size
+            Salary
           </legend>
           <div className="space-y-4" role="radiogroup" aria-labelledby="radiogroup-label">
             {salaryOptionsArray.map((option: OptionType, index: number) => {
@@ -54,7 +54,7 @@ export const SalaryFormStep: FC<StepProps> = (props) => {
         </fieldset>
       </form>
       <FormStepsControlButtons formName={'salary-step-form'} {...props} />
-    </div>
+    </FadeInTransition>
   )
 }
 
@@ -72,7 +72,8 @@ const SalarySelectOption: FC<SalarySelectOptionProps> = (props) => {
   const { key, value } = option
 
   return (
-    <div
+    <FadeInTransition
+      delay={0.2 * index}
       id={`radiogroup-option-${index}`}
       tabIndex={isSelected ? 0 : -1}
       role="radio"
@@ -90,6 +91,6 @@ const SalarySelectOption: FC<SalarySelectOptionProps> = (props) => {
         } absolute inset-0 rounded-lg border-2 pointer-events-none`}
         aria-hidden="true"
       />
-    </div>
+    </FadeInTransition>
   )
 }

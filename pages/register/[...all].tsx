@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import { AllQueryParamsType } from '../../src/types/common'
 const RegisterView = dynamic(
   // @ts-ignore
-  () => import('@screens/register/register-screen').then((mod) => mod.RegisterView),
+  () => import('@screens/register/register-view').then((mod) => mod.RegisterView),
   { ssr: false }
 )
 

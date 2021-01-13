@@ -12,8 +12,8 @@
 - [x] Handle Error and Retry
 - [x] Improve UI using home-ht style as a guide
 - [x] ensure responsiveness
-- [ ] add ease-in animation with framer
-- [ ] Setup Test Environment (jest)
+- [x] add ease-in animation with framer
+- [ ] Setup Test Environment (jest) 
 - [ ] E2E test
 - [ ] update readme with reasons of technical decision and what to be improved, and on-boarding instruction
 - [ ] share fix for the accessibility bug you noticed in production.

@@ -6,6 +6,7 @@ import { RegisterViewProps } from '../../types/common'
 import { getRegistrationData } from '@utils/cache-data-util'
 import { useApolloClient } from '@apollo/client'
 import { routeStep } from '@utils/common'
+import { ErrorView } from '@screens/register/error-view'
 
 export const RegisterView: FC<RegisterViewProps> = (props) => {
   const {
@@ -33,10 +34,10 @@ export const RegisterView: FC<RegisterViewProps> = (props) => {
   const registrationData = getRegistrationData(registrationId, client)
 
   if (!registrationData) {
-    return <div className={'flex'}>goto home or try again</div>
+    return <ErrorView />
   }
   return (
-    <div className={'flex'} style={{ height: 'calc(100vh - 112px)' }}>
+    <div className={'flex'} style={{ height: 'calc(100vh - 25%)' }}>
       <StepsSidebar currentStepIndex={currentStepIndex} />
       <FormSteps
         registrationId={registrationId}

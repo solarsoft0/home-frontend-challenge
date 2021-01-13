@@ -6,6 +6,7 @@ import {
 import { StepProps } from '../../../types/common'
 import { useApolloClient } from '@apollo/client'
 import { updateRegistrationData } from '@utils/cache-data-util'
+import FadeInTransition from '@components/FadeInTransition'
 
 // todo better validation and data serialization
 export const PhoneNumberFormStep: FC<StepProps> = (props) => {
@@ -20,14 +21,12 @@ export const PhoneNumberFormStep: FC<StepProps> = (props) => {
 
   const _handleSubmit = (e: FormEvent) => {
     e.preventDefault()
-    const result = updateRegistrationData(registrationId, { phoneNumber }, client)
-    if (result) {
-      gotoStep(nextPage, registrationId)
-    }
+    updateRegistrationData(registrationId, { phoneNumber }, client)
+    gotoStep(nextPage, registrationId)
   }
 
   return (
-    <div className={'flex-grow flex flex-col pb-10 md:pb-0 justify-between md:justify-start'}>
+    <FadeInTransition className={'flex-grow flex flex-col justify-between md:justify-start'}>
       <form id={'phone-number-step-form'} onSubmit={_handleSubmit}>
         <label
           htmlFor="phone_number"
@@ -61,6 +60,6 @@ export const PhoneNumberFormStep: FC<StepProps> = (props) => {
         </div>
       </form>
       <FormStepsControlButtons formName={'phone-number-step-form'} {...props} />
-    </div>
+    </FadeInTransition>
   )
 }

@@ -18,17 +18,8 @@ const HomeScreen: FC = () => {
   }
 
   return (
-    <section
-      className={'flex flex-grow justify-center items-center flex-col '}
-      style={{ height: 'calc(100vh - 112px)' }}
-    >
-      {/*<div className={'flex-grow relative '}>*/}
-      {/*  <div className={'absolute top-0 h-full w-full flex justify-center'}>*/}
-      {/*    <img className={'w-auto max-h-full'} src={'/hand.jpg'} alt={'hand'}/>*/}
-      {/*  </div>*/}
-      {/*</div>*/}
-
-      <h1 className={'text-6xl font-bold leading-tight text-center text-darkgray'}>
+    <section className={'h-full flex flex-1 flex-grow justify-center items-center flex-col'}>
+      <h1 className={'text-6xl font-bold leading-tight text-center text-darkgray -mt-40'}>
         Leave your apartments.
         <span className={'block text-6xl font-bold leading-tight text-center text-midgray'}>
           In better hands.
