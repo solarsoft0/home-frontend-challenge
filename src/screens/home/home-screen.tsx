@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import { useApolloClient } from '@apollo/client'
 import { useRouter } from 'next/router'
 import { initRegistration } from '@utils/cache-data-util'
-import BaseButton from '@components/BaseButton'
+import BaseButton from '@components/base-button'
 import { routeStep } from '@utils/common'
 
 const HomeScreen: FC = () => {

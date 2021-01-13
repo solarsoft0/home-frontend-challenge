@@ -6,7 +6,7 @@ import {
 import { StepProps } from '../../../types/common'
 import { useApolloClient } from '@apollo/client'
 import { updateRegistrationData } from '@utils/cache-data-util'
-import FadeInTransition from '@components/FadeInTransition'
+import FadeInTransition from '@components/fade-in-transition'
 
 export const EmailFormStep: FC<StepProps> = (props) => {
   const {

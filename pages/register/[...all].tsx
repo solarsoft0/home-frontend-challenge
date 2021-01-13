@@ -1,8 +1,9 @@
 import React, { ReactElement } from 'react'
-import Layout from '@components/Layout'
+import HomeLayout from '@components/home-layout'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import { AllQueryParamsType } from '../../src/types/common'
+import RegistrationLayout from '@components/registration-layout'
 const RegisterView = dynamic(
   // @ts-ignore
   () => import('@screens/register/register-view').then((mod) => mod.RegisterView),
@@ -17,9 +18,9 @@ const RegistrationPage = (): ReactElement => {
   const { all = [] } = (router.query as QueryParamsType) || {}
 
   return (
-    <Layout title="Register">
+    <RegistrationLayout title="Register">
       <RegisterView allQueryParams={all} />
-    </Layout>
+    </RegistrationLayout>
   )
 }
 

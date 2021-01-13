@@ -6,7 +6,7 @@ type LayoutProps = {
   title?: string
 }
 
-const Layout: FC<LayoutProps> = (props) => {
+const HomeLayout: FC<LayoutProps> = (props) => {
   const { children, title = 'Home | Leave your Apartment in better Hands' } = props
 
   return (
@@ -43,7 +43,7 @@ const Layout: FC<LayoutProps> = (props) => {
           <a
             href={'https://www.home.ht/en'}
             className={
-              'p-2 sm:p-6 text-midgray hover:text-gray-900 cursor-pointer text-lg font-medium'
+              'p-2 sm:p-6 text-midgray hover:text-gray-900 cursor-pointer text-md md:text-lg font-medium'
             }
           >
             Landlords
@@ -51,7 +51,7 @@ const Layout: FC<LayoutProps> = (props) => {
           <a
             href={'https://www.home.ht/en'}
             className={
-              'p-2 sm:p-6 text-midgray hover:text-gray-900 cursor-pointer text-lg  font-medium'
+              'p-2 sm:p-6 text-midgray hover:text-gray-900 cursor-pointer text-md md:text-lg font-medium'
             }
           >
             Tenants
@@ -60,7 +60,8 @@ const Layout: FC<LayoutProps> = (props) => {
       </header>
       <div
         className={'max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 h-screen'}
-        style={{ height: 'calc(100vh - 224px)' }}
+        // minus footer and header
+        style={{ height: 'calc(100vh)' }}
       >
         {children}
       </div>
@@ -133,4 +134,4 @@ const Layout: FC<LayoutProps> = (props) => {
   )
 }
 
-export default Layout
+export default HomeLayout

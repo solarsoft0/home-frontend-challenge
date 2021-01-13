@@ -7,7 +7,7 @@ import { OptionType, StepProps } from '../../../types/common'
 import { useApolloClient } from '@apollo/client'
 import { updateRegistrationData } from '@utils/cache-data-util'
 import { salaryOptions } from '@utils/common'
-import FadeInTransition from '@components/FadeInTransition'
+import FadeInTransition from '@components/fade-in-transition'
 
 const salaryOptionsArray = Object.values(salaryOptions)
 

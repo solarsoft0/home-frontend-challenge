@@ -1,8 +1,8 @@
 import React, { FC } from 'react'
-import BaseButton from '@components/BaseButton'
+import BaseButton from '@components/base-button'
 import { gotoStep } from '@screens/register/components/form-control-buttons'
 import { router } from 'next/client'
-import FadeInTransition from '@components/FadeInTransition'
+import FadeInTransition from '@components/fade-in-transition'
 
 export const ErrorView: FC = () => {
   return (

@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { router } from 'next/client'
 import { routeStep, totalStepNo } from '@utils/common'
-import BaseButton from '@components/BaseButton'
+import BaseButton from '@components/base-button'
 
 export type StepProps = {
   registrationId: string
@@ -28,7 +28,8 @@ export const FormStepsControlButtons: FC<StepProps> = (props) => {
   const nextPage: number = currentPage + 1
 
   return (
-    <span className="relative z-0 mt-8 inline-flex justify-end sm:justify-start">
+
+    <span className="relative z-0 mt-8 flex justify-between sm:justify-start fixed bottom-0 right-0">
       <button
         type="button"
         style={{

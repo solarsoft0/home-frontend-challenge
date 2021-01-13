@@ -2,7 +2,7 @@ import React, { FC, FormEvent } from 'react'
 import { FormStepsControlButtons } from '@screens/register/components/form-control-buttons'
 import { StepProps } from '../../../types/common'
 import { salaryOptions } from '@utils/common'
-import FadeInTransition from '@components/FadeInTransition'
+import FadeInTransition from '@components/fade-in-transition'
 
 export const SummaryFormStep: FC<StepProps> = (props) => {
   const { registrationData } = props
