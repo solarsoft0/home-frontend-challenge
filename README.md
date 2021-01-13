@@ -19,3 +19,16 @@
 - [ ] share fix for the accessibility bug you noticed in production.
 
 Can't wait to work,learn and ship together with this Great Team.
+
+
+## Getting Started
+
+First, run the development server:
+
+```bash
+npm run dev
+# or
+yarn dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
