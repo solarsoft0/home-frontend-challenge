@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
-import { routeStep, RouteStepType } from '@screens/register/register-screen'
 import dynamic from 'next/dynamic'
+import { FormStepsProps, RouteStepType } from '../../../types/common'
+import { routeStep } from '@utils/common'
 
 const FullNameFormStep = dynamic(
   // @ts-ignore
@@ -34,29 +35,20 @@ const SummaryFormStep = dynamic(
   { ssr: false }
 )
 
-type FormStepsProps = {
-  currentStepIndex: number
-  registrationId: string
-}
-export type StepProps = {
-  currentPage: number
-  registrationId: string
-}
-
 export const FormSteps: FC<FormStepsProps> = (props) => {
-  const { currentStepIndex, registrationId } = props
+  const { currentStepIndex, registrationId , registrationData } = props
 
   switch (routeStep[currentStepIndex]) {
     case RouteStepType['full-name']:
-      return <FullNameFormStep registrationId={registrationId} currentPage={currentStepIndex} />
+      return <FullNameFormStep registrationId={registrationId} currentPage={currentStepIndex} registrationData={registrationData} />
     case RouteStepType['email']:
-      return <EmailFormStep currentPage={currentStepIndex} registrationId={registrationId} />
+      return <EmailFormStep currentPage={currentStepIndex} registrationId={registrationId} registrationData={registrationData} />
     case RouteStepType['phone-number']:
-      return <PhoneNumberFormStep currentPage={currentStepIndex} registrationId={registrationId} />
+      return <PhoneNumberFormStep currentPage={currentStepIndex} registrationId={registrationId} registrationData={registrationData} />
     case RouteStepType['salary']:
-      return <SalaryFormStep currentPage={currentStepIndex} registrationId={registrationId} />
+      return <SalaryFormStep currentPage={currentStepIndex} registrationId={registrationId} registrationData={registrationData} />
     case RouteStepType['summary']:
-      return <SummaryFormStep currentPage={currentStepIndex} registrationId={registrationId} />
+      return <SummaryFormStep currentPage={currentStepIndex} registrationId={registrationId} registrationData={registrationData} />
     default:
       return <>error</>
   }

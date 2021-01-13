@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react'
 import Layout from '@components/Layout'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
-import { AllQueryParamsType } from '@screens/register/register-screen'
+import { AllQueryParamsType } from '../../src/types/common'
 const RegisterView = dynamic(
   // @ts-ignore
   () => import('@screens/register/register-screen').then((mod) => mod.RegisterView),

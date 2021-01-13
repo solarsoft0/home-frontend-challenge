@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { router } from 'next/client'
-import { routeStep, totalStepNo } from '@screens/register/register-screen'
+import { routeStep, totalStepNo } from '@utils/common'
 
 export type StepProps = {
   registrationId: string
@@ -10,7 +10,10 @@ export type StepProps = {
 
 export const gotoStep = (step: number, registrationId: string) => {
   const route: string = routeStep[step]
-  router.push(`/register/${registrationId}/${route}`)
+  // Make sure we're in the browser
+  if (typeof window !== 'undefined') {
+    router.push(`/register/${registrationId}/${route}`)
+  }
 }
 
 export const FormStepsControlButtons: FC<StepProps> = (props) => {
@@ -56,7 +59,7 @@ export const FormStepsControlButtons: FC<StepProps> = (props) => {
         >
           <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z" />
         </svg>
-        {nextPage >= totalStepNo ? 'Submit' : 'Next'}
+        {nextPage > totalStepNo ? 'Submit' : 'Next'}
       </button>
     </span>
   )

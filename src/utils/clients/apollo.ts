@@ -4,7 +4,7 @@ import { CachePersistor } from 'apollo3-cache-persist'
 import { appConfig } from '../../config'
 import merge from 'deepmerge'
 import isEqual from 'lodash.isequal'
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 
 export const APOLLO_STATE_PROP_NAME = '__APOLLO_STATE__'
 
@@ -29,12 +29,12 @@ export const createApolloClient = async (): Promise<ApolloClient<any>> => {
     typePolicies: {
       Query: {
         fields: {
-          inquiry: {
+          registration: {
             merge(_, incoming) {
               return incoming
             },
           },
-          inquiries: {
+          allRegistration: {
             merge(_, incoming) {
               return incoming
             },
@@ -60,14 +60,15 @@ export const createApolloClient = async (): Promise<ApolloClient<any>> => {
       window.localStorage.setItem(schemaVersionKey, schemaVersion)
     }
   }
+
   return new ApolloClient({
     link,
     cache,
   })
 }
 
-export function initializeApollo(initialState = null) {
-  const _apolloClient = apolloClient ?? createApolloClient()
+export async function initializeApollo(initialState = null) {
+  const _apolloClient = apolloClient ?? (await createApolloClient())
 
   // If your page has Next.js data fetching methods that use Apollo Client, the initial state
   // gets hydrated here
@@ -97,6 +98,11 @@ export function initializeApollo(initialState = null) {
 }
 
 export function useApollo(pageProps: KeyValueAny) {
-  const state = pageProps[APOLLO_STATE_PROP_NAME]
-  return useMemo(() => initializeApollo(state), [state])
+  const state = pageProps[APOLLO_STATE_PROP_NAME];
+  const [client, setClient] = useState(null)
+
+  initializeApollo(state).then((client) => {
+    setClient(client as any)
+  })
+  return useMemo(() => client, [state, client])
 }

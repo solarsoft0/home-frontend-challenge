@@ -2,28 +2,17 @@ import React, { FC } from 'react'
 import { router } from 'next/client'
 import { FormSteps } from '@screens/register/components/form-steps'
 import { StepsSidebar } from '@screens/register/components/steps-sidebar'
-export type AllQueryParamsType = [registrationId: string, step: RouteStepType]
-
-export enum RouteStepType {
-  'full-name' = 'full-name',
-  'email' = 'email',
-  'phone-number' = 'phone-number',
-  'salary' = 'salary',
-  'summary' = 'summary',
-}
-
-export const routeStep: string[] = Object.values(RouteStepType)
-
-export const totalStepNo: number = routeStep.indexOf('summary')
+import { RegisterViewProps } from '../../types/common'
+import { getRegistrationData } from '@utils/cache-data-util'
+import { ApolloClient, useApolloClient } from '@apollo/client'
+import { routeStep } from '@utils/common'
 
 
-type RegisterViewProps = {
-  allQueryParams: AllQueryParamsType | []
-}
 export const RegisterView: FC<RegisterViewProps> = (props) => {
   const {
     allQueryParams: [registrationId, step, ...restProps],
   } = props
+  const client: ApolloClient<any> = useApolloClient();
 
   // if SSG return empty (SSG doesnt make path params available)
   // its good we can SSG base UI on build time, and render the rest on client side
@@ -41,12 +30,19 @@ export const RegisterView: FC<RegisterViewProps> = (props) => {
     return <></>
   }
 
-  // todo try get inquiries/registration
+   const registrationData = getRegistrationData(registrationId, client);
 
+if (!registrationData){
+  return (
+    <div className={'flex'}>
+      goto home or try again
+    </div>
+  )
+}
   return (
     <div className={'flex'}>
       <StepsSidebar currentStepIndex={currentStepIndex} />
-      <FormSteps registrationId={registrationId} currentStepIndex={currentStepIndex} />
+      <FormSteps registrationId={registrationId} currentStepIndex={currentStepIndex} registrationData={registrationData}/>
     </div>
   )
 }

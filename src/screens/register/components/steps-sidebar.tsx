@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { totalStepNo } from '@screens/register/register-screen'
+import { totalStepNo } from '@utils/common'
 
 type FormStepsProps = {
   currentStepIndex: number

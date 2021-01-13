@@ -6,10 +6,10 @@
 - [x] Setup Prettier and husky
 - [x] Setup Apollo Client and Config
 - [x] Persist Apollo Cache
-- [ ] Create Multi Step Form Page Logic
-- [ ] Create Local Query and Mutation
-- [ ] Hook query and Mutation to Form
-- [ ] Handle Error and Retry
+- [x] Create Multi Step Form Page Logic
+- [x] ~~Create Local Query and Mutation~~ Create Write Query and Write Fragment
+- [x] ~~Hook query and Mutation to Form~~  hook cache management util to form
+- [x] Handle Error and Retry
 - [ ] Improve UI using home-ht style as a guide
 - [ ] ensure responsiveness
 - [ ] add ease-in animation with framer

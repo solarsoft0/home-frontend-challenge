@@ -1,14 +1,26 @@
-import React, { FC, FormEvent } from 'react'
+import React, { FC, FormEvent, useState } from 'react'
 import { FormStepsControlButtons, gotoStep } from '@screens/register/components/form-control-buttons'
-import { StepProps } from '@screens/register/components/form-steps'
+import { StepProps } from '../../../types/common'
+import { useApolloClient } from '@apollo/client'
+import { updateRegistrationData } from '@utils/cache-data-util'
 
 
 export const EmailFormStep: FC<StepProps> = (props) => {
-  const { currentPage, registrationId } = props
+  const {
+    registrationId,
+    currentPage,
+    registrationData: { email: regEmail },
+  } = props
+  const [email, setEmail] = useState(regEmail || '')
+  const client = useApolloClient()
   const nextPage: number = currentPage + 1
+
   const _handleSubmit = (e: FormEvent) => {
     e.preventDefault()
-    gotoStep(nextPage, registrationId)
+    const result = updateRegistrationData(registrationId, { email }, client)
+    if (result) {
+      gotoStep(nextPage, registrationId)
+    }
   }
 
   return (
@@ -34,8 +46,12 @@ export const EmailFormStep: FC<StepProps> = (props) => {
           type="text"
           name="email"
           id="email"
+          required
+          value={email}
+          onChange={({ target }) => setEmail(target.value)}
           className="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-md"
           placeholder="you@example.com"
+          title="Please provide a valid email"
         />
       </div>
     </form>
