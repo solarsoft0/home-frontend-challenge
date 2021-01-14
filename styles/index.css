@@ -13,3 +13,16 @@ html{
 #__next, body {
     height: 100%;
 }
+
+#nprogress .bar {
+    @apply bg-lemon
+}
+
+#nprogress .peg {
+    @apply bg-lemon;
+}
+
+#nprogress .spinner-icon {
+    border-top-color: rgb(122, 196, 85);
+    border-left-color: rgb(122, 196, 85);
+}

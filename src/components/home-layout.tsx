@@ -10,7 +10,7 @@ const HomeLayout: FC<LayoutProps> = (props) => {
   const { children, title = 'Home | Leave your Apartment in better Hands' } = props
 
   return (
-    <div className={'px-4 sm:px-6 lg:px-8'}>
+    <div className={'px-4 sm:px-6 lg:px-8 h-full'}>
       <Head>
         <title>{title}</title>
         <meta charSet="utf-8" />
@@ -60,7 +60,7 @@ const HomeLayout: FC<LayoutProps> = (props) => {
       <div
         className={'max-w-7xl mx-auto px-2 sm:px-4 lg:px-6'}
         // minus footer and header
-        style={{ height: 'calc(100vh - 210px)' }}
+        style={{ height: 'calc(100% - 200px)' }}
       >
         {children}
       </div>

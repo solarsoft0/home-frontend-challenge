@@ -17,6 +17,7 @@
   "dependencies": {
     "@apollo/client": "^3.3.6",
     "@types/lodash.isequal": "^4.5.5",
+    "@types/nprogress": "^0.2.0",
     "apollo-link-error": "^1.1.13",
     "apollo3-cache-persist": "^0.9.1",
     "deepmerge": "^4.2.2",
@@ -24,6 +25,7 @@
     "graphql": "^15.4.0",
     "lodash.isequal": "^4.5.0",
     "next": "latest",
+    "nprogress": "^0.2.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "uuid": "^8.3.2"
