@@ -5,3 +5,11 @@
 * {
     @apply antialiased;
 }
+
+html{
+    height: 100%;
+}
+
+#__next, body {
+    height: 100%;
+}

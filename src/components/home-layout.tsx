@@ -29,7 +29,6 @@ const HomeLayout: FC<LayoutProps> = (props) => {
                 'drop-shadow(rgba(0, 0, 0, 0.09) 0px 0px 2px) drop-shadow(rgba(0, 0, 0, 0.12) 0px 1px 2px)',
             }}
           >
-            <title>Home HT</title>
             <path d="M20.583 4.46234H3.09552V19.5779H20.583V4.46234Z" fill="#333333" />
             <path
               fillRule="evenodd"
@@ -59,9 +58,9 @@ const HomeLayout: FC<LayoutProps> = (props) => {
         </nav>
       </header>
       <div
-        className={'max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 h-screen'}
+        className={'max-w-7xl mx-auto px-2 sm:px-4 lg:px-6'}
         // minus footer and header
-        style={{ height: 'calc(100vh)' }}
+        style={{ height: 'calc(100vh - 210px)' }}
       >
         {children}
       </div>

@@ -19,7 +19,7 @@ const HomeScreen: FC = () => {
 
   return (
     <section className={'h-full flex flex-grow justify-center items-center flex-col'}>
-      <h1 className={'text-3xl md:text-6xl font-bold leading-tight text-center text-darkgray -mt-40'}>
+      <h1 className={'text-3xl md:text-6xl font-bold leading-tight text-center text-darkgray'}>
         Leave your apartments.
         <span className={'block text-3xl md:text-6xl font-bold leading-tight text-center text-midgray'}>
           In better hands.

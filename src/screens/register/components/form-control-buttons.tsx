@@ -29,7 +29,7 @@ export const FormStepsControlButtons: FC<StepProps> = (props) => {
 
   return (
 
-    <span className="relative z-0 mt-8 flex justify-between sm:justify-start fixed bottom-0 right-0">
+    <span className="relative z-0 mt-8 flex justify-between sm:justify-start mb-10">
       <button
         type="button"
         style={{

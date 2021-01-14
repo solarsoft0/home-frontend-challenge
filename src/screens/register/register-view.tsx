@@ -37,13 +37,13 @@ export const RegisterView: FC<RegisterViewProps> = (props) => {
     return <ErrorView />
   }
   return (
-    <div className={'flex flex-grow h-full'}>
+    <>
       <StepsSidebar currentStepIndex={currentStepIndex} />
       <FormSteps
         registrationId={registrationId}
         currentStepIndex={currentStepIndex}
         registrationData={registrationData}
       />
-    </div>
+    </>
   )
 }

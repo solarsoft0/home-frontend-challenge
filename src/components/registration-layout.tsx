@@ -10,13 +10,13 @@ const RegistrationLayout: FC<LayoutProps> = (props) => {
   const { children, title = 'Home | Leave your Apartment in better Hands' } = props
 
   return (
-    <div className={'px-4 sm:px-6 lg:px-8'}>
+    <div className={'px-4 sm:px-6 lg:px-8 h-full'}>
       <Head>
         <title>{title}</title>
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <header className={'flex items-center justify-between h-20'}>
+      <header className={'flex items-center justify-between h-28'}>
         <a href={'https://www.home.ht/en'} className={' cursor-pointer '}>
           <svg
             width="24"
@@ -41,9 +41,9 @@ const RegistrationLayout: FC<LayoutProps> = (props) => {
         </a>
       </header>
       <div
-        className={'max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 h-screen'}
-        // minus footer and header
-        style={{ height: 'calc(100vh - 124px)' }}
+        className={'max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 flex'}
+        // minus header height
+        style={{ height: 'calc(100% - 112px)' }}
       >
         {children}
       </div>

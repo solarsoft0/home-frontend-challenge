@@ -30,9 +30,9 @@ export const SalaryFormStep: FC<StepProps> = (props) => {
 
   return (
     <FadeInTransition
-      className={'flex-grow flex flex-col pb-10 md:pb-0 justify-between md:justify-start'}
+      className={'flex flex-1 flex-col pb-10 md:pb-0 justify-between md:justify-start'}
     >
-      <form id={'salary-step-form'} onSubmit={_handleSubmit} className={'md:h-1/2'}>
+      <form id={'salary-step-form'} onSubmit={_handleSubmit} className={'flex flex-col md:h-1/2'}>
         <p className="mb-3 block text-sm font-light text-gray-700 pt-5 md:pt-0">Salary</p>
         <fieldset>
           <legend id="radiogroup-label" className="sr-only">
@@ -80,7 +80,7 @@ const SalarySelectOption: FC<SalarySelectOptionProps> = (props) => {
       aria-checked={isSelected ? 'true' : 'false'}
       onClick={() => setOption(key)}
       onKeyPress={() => setOption(key)}
-      className="group relative bg-white rounded-lg  cursor-pointer focus:outline-none   border-none w-full"
+      className="group relative bg-white rounded-lg  cursor-pointer focus:outline-none  border-none w-full"
     >
       <div className="rounded-lg border border-gray-300 bg-white px-6 py-4 hover:border-gray-400 sm:flex sm:justify-between">
         <div className="flex text-sm font-light text-gray-700 items-center">{value}</div>
